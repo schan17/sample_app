@@ -28,6 +28,11 @@ describe "StaticPages" do
   		visit '/static_pages/help'
   		page.should have_selector('title', :text=>'Ruby on Rails Tutorial Sample App | Help')
   	end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/help'
+      page.should_not have_selector('title', :text=>'| Help')
+    end
   end
 
   describe "About page" do
@@ -40,5 +45,10 @@ describe "StaticPages" do
   		visit '/static_pages/about'
   		page.should have_selector('title', :text=>'Ruby on Rails Tutorial Sample App | About Us')
   	end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/about'
+      page.should_not have_selector('title', :text=>'| about')
+    end
   end
 end
